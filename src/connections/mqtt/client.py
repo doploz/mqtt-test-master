@@ -10,7 +10,7 @@ import getpass
 
 #from ..db.dbConnection import insertMetaData
 
-topic = "julian/uce"
+topic = "julian/UCE"
 broker = "broker.hivemq.com"
 port = 1883
 
@@ -44,17 +44,19 @@ def connect_mqtt():
 
     
 def getMetaDataOnOS():
+    
     net_stats = psutil.net_io_counters()
     received_data = net_stats.bytes_recv
     sent_data = net_stats.bytes_sent
     
-    username = getpass.getuser()
-    
-    cpuF = psutil.cpu_freq()
+    username = random.randint(1, 4)
+    #username = getpass.getuser()
+    cpu_percent = psutil.cpu_percent()
+    disk_percent = random.randint(1,100)
     memoria = psutil.virtual_memory()
 
     current_datetime = datetime.now()
-    data = { "id": username,"cpu": cpuF.max, "memory": memoria.percent, "net_recieved":convert_bytes(received_data), "inserDT":current_datetime.strftime("%Y-%m-%d %H:%M:%S")}
+    data = { "id": username,"CPU":cpu_percent,"Memoria": memoria.percent,"Disco": disk_percent, "Recepcion":convert_bytes(received_data), "inserDT":current_datetime.strftime("%Y-%m-%d %H:%M:%S")}
 
     # Convert the dictionary to a JSON string
     json_string = json.dumps(data, indent=2)  # The indent parameter is optional and adds indentation for better readability

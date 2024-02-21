@@ -25,11 +25,12 @@ def insertMetaData(rawJSON):
 
     # Example data to insert
     data_to_insert = {
+        "Maquina":parsed_data["maquina"],
         "id": parsed_data["id"],
-        "cpu": parsed_data["cpu"],
-        "memory": parsed_data["memory"],
-        "net": parsed_data["net"],
-        "temp": parsed_data["temp"],
+        "CPU": parsed_data["cpu"],
+        "Memoria": parsed_data["memoria"],
+        "Recepcion": parsed_data["recepcion"],
+        "Disco": parsed_data["disco"],
         "inserDT": parsed_data["inserDT"],
     }
 

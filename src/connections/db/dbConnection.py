@@ -16,21 +16,22 @@ database = os.getenv("dataBase")
 def insertMetaData(rawJSON):
 
     parsed_data = json.loads(rawJSON)
+    
     connection = mysql.connector.connect(host=host,user=user,password=password,database=database)
     # Create a cursor object to interact with the database
     cursor = connection.cursor()
 
     # Replace 'your_table' with the actual table name
-    table_name = "metadata"
+    table_name = "Metadata"
 
     # Example data to insert
     data_to_insert = {
-        "Maquina":parsed_data["maquina"],
-        "id": parsed_data["id"],
-        "CPU": parsed_data["cpu"],
-        "Memoria": parsed_data["memoria"],
-        "Recepcion": parsed_data["recepcion"],
-        "Disco": parsed_data["disco"],
+        "MAQUINA":parsed_data["Maquina"],
+        "ID": parsed_data["id"],
+        "CPU": parsed_data["CPU"],
+        "MEMORIA": parsed_data["Memoria"],
+        "RECEPCION": parsed_data["Recepcion"],
+        "DISCO": parsed_data["Disco"],
         "inserDT": parsed_data["inserDT"],
     }
 

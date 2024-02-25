@@ -13,8 +13,8 @@ from ..db.dbConnection import insertMetaData
 topic = "julian/UCE"
 broker = "broker.hivemq.com"
 port = 1883
-
-
+#maquina = num_maquina()
+nombreMaquina = get_name()
 
 # Generate a Client ID with the publish prefix.
 client_id = f'publish-{random.randint(0, 1000)}'
@@ -44,19 +44,18 @@ def connect_mqtt():
 
 
 
-def getMetaDataOnOS():
-  
+def getMetaDataOnOS():  
     net_stats = psutil.net_io_counters()
     received_data = net_stats.bytes_recv
     sent_data = net_stats.bytes_sent
     disk_percent = get_disk_io_operations()
-    maquina = random.randint(1, 4)
-    username = getpass.getuser()
+    maquina = random.randint(1,4)
+    
     cpu_percent = psutil.cpu_percent()
     memoria = psutil.virtual_memory()
 
     current_datetime = datetime.now()
-    data = { "Maquina": maquina, "id": username,"CPU":cpu_percent,"Memoria": memoria.percent,"Disco": convert_bytes(disk_percent), "Recepcion":convert_bytes(received_data), "inserDT":current_datetime.strftime("%Y-%m-%d %H:%M:%S")}
+    data = { "Maquina": maquina, "id": nombreMaquina,"CPU":cpu_percent,"Memoria": memoria.percent,"Disco": convert_bytes(disk_percent), "Recepcion":convert_bytes(received_data), "inserDT":current_datetime.strftime("%Y-%m-%d %H:%M:%S")}
 
     # Convert the dictionary to a JSON string
     json_string = json.dumps(data, indent=2)  # The indent parameter is optional and adds indentation for better readability

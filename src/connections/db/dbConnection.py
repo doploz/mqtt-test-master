@@ -6,7 +6,7 @@ load_dotenv()
 
 # Replace these values with your own database information
 host = os.getenv("host")
-user = os.getenv("user")
+user = os.getenv("user1")
 password = os.getenv("password")
 database = os.getenv("dataBase")
 
